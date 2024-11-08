@@ -1,825 +1,589 @@
-<html><head><base href="." /><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nicebott | Desarrollador Web</title>
-<style>
-:root {
-  --primary: #ff3333;
-  --dark: #111;
-  --light: #fff;
-}
+<html><head><base href="." /><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Seguridad Núñez | Servicios de Seguridad en Santo Domingo Este</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
+<style>
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
-  background: var(--dark);
-  color: var(--light);
-  line-height: 1.6;
-  overflow-x: hidden;
+    color: #fff;
+    background: #000428;
+    overflow-x: hidden;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #000428, #004e92);
+    z-index: -1;
 }
 
-/* Navbar Styles */
 .navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  padding: 1rem 0;
-  background: rgba(0,0,0,0.5);
-  backdrop-filter: blur(5px);
+    padding: 1rem 5%;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    background: rgba(0, 78, 146, 0.9);
+    backdrop-filter: blur(10px);
+    transition: 0.3s all;
 }
 
-.nav-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.navbar.scrolled {
+    padding: 0.5rem 5%;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.3);
 }
 
 .logo {
-  font-size: 1.5rem;
-  font-weight: 700;
-  background: linear-gradient(45deg, var(--primary), #ff8080);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradient 3s ease infinite;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    text-decoration: none;
 }
 
-.menu-toggle {
-  display: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: var(--light);
-}
-
-.nav-links {
-  display: flex;
-  gap: 2rem;
-}
-
-.nav-links a {
-  color: var(--light);
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.nav-links a:hover {
-  color: var(--primary);
-}
-
-/* Hero Section */
 .hero {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(45deg, var(--primary) 0%, var(--dark) 100%);
-  opacity: 0.1;
-  animation: pulse 4s ease infinite;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-}
-
-.profile-pic {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  border: 3px solid var(--primary);
-  margin-bottom: 2rem;
-  animation: float 3s ease-in-out infinite;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 5%;
 }
 
 .hero h1 {
-  font-size: 4rem;
-  margin-bottom: 1rem;
-  background: linear-gradient(45deg, var(--primary), #ff8080, var(--primary));
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shine 3s linear infinite;
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s forwards;
 }
 
 .hero p {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s 0.2s forwards;
 }
 
-.btn {
-  display: inline-block;
-  padding: 1rem 2rem;
-  background: var(--primary);
-  color: var(--light);
-  text-decoration: none;
-  border-radius: 5px;
-  transition: transform 0.3s ease;
+.cta-btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: #004e92;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: 0.3s all;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s 0.4s forwards;
 }
 
-.btn:hover {
-  transform: translateY(-3px);
+.cta-btn:hover {
+    background: #0066bb;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
-/* Projects Section */
-.projects {
-  padding: 5rem 0;
+.services {
+    padding: 5rem 5%;
 }
 
-.projects h2 {
-  text-align: center;
-  margin-bottom: 3rem;
+.services h2 {
+    text-align: center;
+    margin-bottom: 3rem;
 }
 
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
 }
 
-.project-card {
-  position: relative;
-  background: rgba(255,255,255,0.05);
-  padding: 2rem;
-  border-radius: 15px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  transform-style: preserve-3d;
-  perspective: 1000px;
-  cursor: pointer;
-  text-decoration: none;
-  color: var(--light);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-  overflow: hidden;
+.service-card {
+    background: rgba(255,255,255,0.1);
+    padding: 2rem;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    transition: 0.4s all cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
 }
 
-.project-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(45deg, var(--primary), transparent);
-  opacity: 0;
-  transition: 0.3s;
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
 }
 
-.project-card:hover::before {
-  opacity: 0.1;
+.service-card:hover::before {
+    left: 100%;
 }
 
-.project-card::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255,255,255,0.1),
-    transparent
-  );
-  transition: 0.5s;
+.service-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    background: rgba(255,255,255,0.15);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
-.project-card:hover::after {
-  left: 100%;
+.about {
+    padding: 5rem 5%;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
 }
 
-.project-card:hover {
-  transform: translateY(-10px) rotateX(10deg);
-  box-shadow: 0 20px 40px rgba(255,51,51,0.2);
+.about-content {
+    flex: 1;
 }
 
-.tech-stack {
-  display: flex;
-  flex-wrap: wrap;
+.about-image {
+    flex: 1;
+    position: relative;
 }
 
-.tech-stack span {
-  display: inline-block;
-  background: rgba(255,255,255,0.1);
-  padding: 0.3rem 0.8rem;
-  border-radius: 15px;
-  margin: 0.5rem 0.5rem 0.5rem 0;
-  font-size: 0.9rem;
+.about-image::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 100%;
+    height: 100%;
+    background: #004e92;
+    z-index: -1;
+    border-radius: 15px;
 }
 
-/* Added styles */
-.project-card .btn {
-  display: none;
-}
-.project-card h3 {
-  margin-bottom: 1rem;
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-/* Animations */
-@keyframes gradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .about {
+        flex-direction: column;
+    }
+    
+    .about-image {
+        order: -1;
+    }
+}
+
+.stats {
+    padding: 5rem 5%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    text-align: center;
+}
+
+.stat-item {
+    background: rgba(255,255,255,0.1);
+    padding: 2rem;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, #004e92, #00c6ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.testimonials {
+    padding: 5rem 5%;
+}
+
+.testimonial-slider {
+    overflow: hidden;
+    padding: 2rem 0;
+}
+
+.testimonial-track {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.testimonial-card {
+    min-width: 300px;
+    margin: 0 1rem;
+    padding: 2rem;
+    background: rgba(255,255,255,0.1);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+.floating {
+    animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.pulse {
+    animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
-  0% { opacity: 0.1; }
-  50% { opacity: 0.2; }
-  100% { opacity: 0.1; }
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
 }
 
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
+.founder {
+    padding: 5rem 5%;
+    background: rgba(0, 0, 0, 0.3);
 }
 
-.skill-bars {
-  margin-top: 2rem;
-}
-
-.skill {
-  margin-bottom: 1.5rem;
-}
-
-.skill-name {
-  margin-bottom: 0.5rem;
-}
-
-.skill-bar {
-  height: 10px;
-  background: rgba(255,255,255,0.1);
-  border-radius: 5px;
-  overflow: hidden;
-}
-
-.skill-progress {
-  height: 100%;
-  background: var(--primary);
-  width: 0;
-  transition: width 1.5s ease;
-}
-
-/* About Section */
-.about {
-  padding: 5rem 0;
-}
-
-.contact {
-  padding: 5rem 0;
-  background: rgba(255,255,255,0.02);
-}
-
-.social-links {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.social-links a {
-  color: var(--light);
-  font-size: 1.5rem;
-  position: relative;
-  display: inline-block;
-  padding: 10px;
-  transition: color 0.3s ease;
-}
-
-.social-links a::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background: var(--primary);
-  opacity: 0.1;
-  top: 0;
-  left: 0;
-  transform: scale(0);
-  transition: transform 0.3s ease;
-}
-
-.social-links a:hover {
-  color: var(--primary);
-}
-
-.social-links a:hover::after {
-  transform: scale(1);
-}
-
-/* Added styles */
-.typing-effect {
-  border-right: 3px solid var(--primary);
-  white-space: nowrap;
-  overflow: hidden;
-  animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
-}
-
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
-}
-@keyframes blink-caret {
-  from, to { border-color: transparent }
-  50% { border-color: var(--primary); }
-}
-
-.floating-shapes {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: 0;
-}
-
-.shape {
-  position: absolute;
-  border-radius: 50%;
-  background: var(--primary);
-  opacity: 0.1;
-  animation: floatingShapes 15s linear infinite;
-}
-
-@keyframes floatingShapes {
-  0% {
-    transform: translate(0, 0) rotate(0deg);
-  }
-  100% {
-    transform: translate(100vw, 100vh) rotate(360deg);
-  }
-}
-
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
-  animation: slideUp 1s ease forwards;
-}
-
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .menu-toggle {
-    display: block;
-  }
-
-  .nav-links {
-    position: fixed;
-    top: 60px;
-    left: 0;
-    width: 100%;
-    padding: 1rem;
-    background: rgba(0,0,0,0.9);
-    flex-direction: column;
+.founder-content {
+    display: flex;
     align-items: center;
-    transform: translateY(-150%);
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.founder-image {
+    flex: 1;
+    position: relative;
+    max-width: 400px;
+}
+
+.founder-image img {
     transition: transform 0.3s ease;
-  }
-
-  .nav-links.active {
-    transform: translateY(0);
-  }
-
-  .hero h1 {
-    font-size: 2.5rem;
-  }
-
-  .project-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .social-links {
-    flex-wrap: wrap;
-  }
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    border-radius: 15px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-@media screen and (max-width: 480px) {
-  .hero h1 {
-    font-size: 2rem;
-  }
-  
-  .btn {
+.founder-image img:hover {
+    transform: scale(1.02);
+}
+
+.founder-image::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 100%;
+    height: 100%;
+    background: #004e92;
+    z-index: -1;
+    border-radius: 15px;
+}
+
+.founder-text {
+    flex: 2;
+}
+
+.founder h2 {
+    margin-bottom: 2rem;
+    color: #fff;
+}
+
+.founder-text p {
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}
+
+.footer {
+    background: rgba(0, 0, 0, 0.9);
+    padding: 3rem 5%;
+    margin-top: 5rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-section h3 {
+    color: #fff;
+    margin-bottom: 1.5rem;
+}
+
+.footer-section p, .footer-section a {
+    color: #aaa;
+    text-decoration: none;
+    margin-bottom: 0.5rem;
     display: block;
-    margin: 1rem 0 !important;
+}
+
+.footer-section a:hover {
+    color: #fff;
+}
+
+.footer-bottom {
     text-align: center;
-  }
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    color: #aaa;
 }
 
-#sobre-mi div > div {
-  padding: 2rem;
-  background: rgba(255,255,255,0.05);
-  border-radius: 15px;
-  transition: all 0.3s ease;
-}
-
-#sobre-mi div > div:hover {
-  transform: translateY(-10px);
-  background: rgba(255,255,255,0.1);
-}
-
-#sobre-mi div > div i {
-  margin-bottom: 1rem;
-}
-
-#sobre-mi div > div h3 {
-  margin-bottom: 1rem;
-  color: var(--primary);
-}
-
-#sobre-mi div > div p {
-  font-size: 0.9rem;
-  opacity: 0.8;
-}
-
-#sobre-mi > p {
-  max-width: 800px;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  text-align: center;
-}
-
-#sobre-mi h2 {
-  text-align: center;
-  margin-bottom: 1rem;
-  position: relative;
-}
-
-#sobre-mi h2::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 50px;
-  height: 3px;
-  background: var(--primary);
+@media (max-width: 768px) {
+    .founder-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer-content {
+        text-align: center;
+    }
 }
 </style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <nav class="navbar">
-    <div class="container nav-content">
-      <div class="logo">Nicebott</div>
-      <div class="menu-toggle">
-        <i class="fas fa-bars"></i>
-      </div>
-      <div class="nav-links">
-        <a href="#inicio">Inicio</a>
-        <a href="#sobre-mi">Sobre Mí</a>
-        <a href="#proyectos">Proyectos</a>
-        <a href="#habilidades">Habilidades</a>
-        <a href="#contacto">Contacto</a>
-      </div>
-    </div>
-  </nav>
 
-  <section class="hero" id="inicio">
-    <div class="container hero-content">
-      <svg class="profile-pic" viewBox="0 0 100 100">
-        <circle cx="50" cy="50" r="45" fill="#ff3333" opacity="0.1"/>
-        <path d="M50 20
-          a15 15 0 0 1 0 30
-          a15 15 0 0 1 0 -30" fill="#ff3333"/>
-        <path d="M20 85
-          c0-30 60-30 60 0" fill="#ff3333"/>
-      </svg>
-      <h1 class="typing-effect">Hola, soy <span style="color: var(--primary)">Nicebott</span></h1>
-      <p>Desarrollador Web Full-Stack & Creador de Soluciones Digitales</p>
-      <p style="margin-bottom: 2rem;">⚡ JavaScript | React | Node.js | MongoDB</p>
-      <a href="#proyectos" class="btn">Ver Proyectos</a>
-      <a href="#contacto" class="btn" style="margin-left: 1rem; background: transparent; border: 2px solid var(--primary);">Contáctame</a>
-    </div>
-    <div class="floating-shapes"></div>
-  </section>
+<div id="particles-js"></div>
 
-  <section id="sobre-mi" class="container reveal" style="padding: 5rem 0;">
-    <h2>Sobre Mí</h2>
-    <p style="margin: 2rem 0;">
-      Soy un desarrollador web apasionado por crear experiencias digitales únicas y funcionales. 
-      Mi enfoque se centra en combinar diseño atractivo con código limpio y eficiente.
-      Siempre estoy en búsqueda de nuevos desafíos y oportunidades para aprender y crecer.
-    </p>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align: center;">
-      <div>
-        <i class="fas fa-code" style="font-size: 2rem; color: var(--primary);"></i>
-        <h3>Desarrollo Web</h3>
-        <p>Sitios web modernos y responsivos</p>
-      </div>
-      <div>
-        <i class="fas fa-mobile-alt" style="font-size: 2rem; color: var(--primary);"></i>
-        <h3>Diseño Responsive</h3>
-        <p>Adaptable a todos los dispositivos</p>
-      </div>
-      <div>
-        <i class="fas fa-server" style="font-size: 2rem; color: var(--primary);"></i>
-        <h3>Backend</h3>
-        <p>APIs y servicios robustos</p>
-      </div>
-    </div>
-  </section>
+<nav class="navbar">
+    <a href="https://seguridadnunez.com" class="logo">Seguridad Núñez</a>
+</nav>
 
-  <section class="projects reveal" id="proyectos">
-    <div class="container">
-      <h2>Mis Proyectos</h2>
-      <div class="project-grid">
-        <a href="https://altamax.com" class="project-card">
-          <h3>ALTAMAX - Abogados & Bienes Raíces</h3>
-          <p>Sitio web corporativo para firma de abogados y bienes raíces</p>
-          <div class="tech-stack">
-            <span>HTML5</span>
-            <span>CSS3</span>
-            <span>JavaScript</span>
-          </div>
-        </a>
-        <a href="https://contaexpert.com" class="project-card">
-          <h3>ContaExpert - Soluciones Contables Inteligentes</h3>
-          <p>Optimice su gestión financiera con nuestro equipo de expertos</p>
-          <div class="tech-stack">
-            <span>HTML5</span>
-            <span>CSS3</span>
-            <span>JavaScript</span>
-          </div>
-        </a>
-        <div class="project-card">
-          <h3>Portfolio Website</h3>
-          <p>Diseño y desarrollo de sitios web personalizados</p>
-          <div class="tech-stack">
-            <span>HTML5</span>
-            <span>CSS3</span>
-            <span>JavaScript</span>
-          </div>
-        </div>
-      </div>
+<section class="hero">
+    <div class="hero-content">
+        <h1>Protegiendo lo que más importa</h1>
+        <p>Servicios profesionales de seguridad en Santo Domingo Este</p>
+        <a href="https://seguridadnunez.com/contacto" class="cta-btn">Solicitar Servicio</a>
     </div>
-  </section>
+</section>
 
-  <section id="habilidades" class="container reveal">
-    <h2>Mis Habilidades</h2>
-    <div class="skill-bars">
-      <div class="skill">
-        <div class="skill-name">HTML/CSS</div>
-        <div class="skill-bar">
-          <div class="skill-progress" data-width="90"></div>
+<section class="services">
+    <h2>Nuestros Servicios</h2>
+    <div class="services-grid">
+        <div class="service-card">
+            <h3>Seguridad Residencial</h3>
+            <p>Protección 24/7 para su hogar y familia con personal altamente capacitado.</p>
         </div>
-      </div>
-      <div class="skill">
-        <div class="skill-name">JavaScript</div>
-        <div class="skill-bar">
-          <div class="skill-progress" data-width="85"></div>
+        <div class="service-card">
+            <h3>Seguridad Comercial</h3>
+            <p>Soluciones de seguridad integral para empresas y negocios.</p>
         </div>
-      </div>
-      <div class="skill">
-        <div class="skill-name">React</div>
-        <div class="skill-bar">
-          <div class="skill-progress" data-width="80"></div>
+        <div class="service-card">
+            <h3>Monitoreo Electrónico</h3>
+            <p>Sistemas de vigilancia avanzados con tecnología de última generación.</p>
         </div>
-      </div>
-      <div class="skill">
-        <div class="skill-name">Node.js</div>
-        <div class="skill-bar">
-          <div class="skill-progress" data-width="75"></div>
-        </div>
-      </div>
     </div>
-  </section>
+</section>
 
-  <section id="contacto" class="contact reveal">
-    <div class="container">
-      <h2>Contacto</h2>
-      <div class="social-links">
-        <a href="https://github.com"><i class="fab fa-github"></i></a>
-        <a href="https://linkedin.com"><i class="fab fa-linkedin"></i></a>
-        <a href="https://twitter.com"><i class="fab fa-twitter"></i></a>
-        <a href="mailto:tu@email.com"><i class="fas fa-envelope"></i></a>
-      </div>
+<section class="stats">
+    <div class="stat-item" data-aos="fade-up">
+        <div class="stat-number">10+</div>
+        <p>Años de Experiencia</p>
     </div>
-  </section>
+    <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+        <div class="stat-number">500+</div>
+        <p>Clientes Satisfechos</p>
+    </div>
+    <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+        <div class="stat-number">24/7</div>
+        <p>Servicio Continuo</p>
+    </div>
+    <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+        <div class="stat-number">100+</div>
+        <p>Personal Capacitado</p>
+    </div>
+</section>
+
+<section class="testimonials">
+    <h2 class="text-center" data-aos="fade-up">Lo que dicen nuestros clientes</h2>
+    <div class="testimonial-slider" data-aos="fade-up">
+        <div class="testimonial-track">
+            <div class="testimonial-card">
+                <p>"Servicio excepcional y personal altamente profesional. Me siento seguro sabiendo que Seguridad Núñez protege mi negocio."</p>
+                <h4>- Carlos Rodríguez</h4>
+            </div>
+            <div class="testimonial-card">
+                <p>"La mejor decisión que tomamos fue contratar a Seguridad Núñez. Su atención al detalle y compromiso son incomparables."</p>
+                <h4>- María Pérez</h4>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="about">
+    <div class="about-content">
+        <h2>Sobre Nosotros</h2>
+        <p>Fundada por Nicolas Núñez, nuestra empresa se ha convertido en un referente de la seguridad privada en Santo Domingo Este. Con más de una década de experiencia, nos dedicamos a proporcionar servicios de seguridad de la más alta calidad.</p>
+        <p>Nuestro compromiso con la excelencia y la profesionalidad nos ha permitido ganar la confianza de cientos de clientes satisfechos.</p>
+    </div>
+    <div class="about-image">
+        <svg width="400" height="400" viewBox="0 0 400 400">
+            <rect width="100%" height="100%" fill="rgba(255,255,255,0.1)" rx="15"/>
+            <circle cx="200" cy="150" r="50" fill="#004e92"/>
+            <path d="M200 220 Q200 280 200 350" stroke="#004e92" stroke-width="10" fill="none"/>
+            <rect x="150" y="280" width="100" height="50" fill="#004e92" rx="10"/>
+        </svg>
+    </div>
+</section>
+
+<section class="founder">
+    <div class="founder-content">
+        <div class="founder-image">
+            <img src="/a/2bbf1a21-e3fb-4266-b0f3-72c962773c5a" alt="Nicolas Núñez, fundador de Seguridad Núñez" width="400" height="400" style="object-fit: cover; border-radius: 15px; width: 100%; height: 100%;">
+        </div>
+        <div class="founder-text">
+            <h2>Nuestro Fundador</h2>
+            <p>Nicolas Núñez, con más de 15 años de experiencia en el sector de seguridad, fundó Seguridad Núñez con la visión de proporcionar servicios de protección de primera clase en Santo Domingo Este.</p>
+            <p>Su dedicación a la excelencia y su profundo conocimiento de la industria han sido fundamentales para establecer los altos estándares que caracterizan a nuestra empresa.</p>
+            <p>Bajo su liderazgo, hemos crecido hasta convertirnos en una de las empresas de seguridad más respetadas de la región, manteniendo siempre nuestro compromiso con la calidad y la profesionalidad.</p>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>Contacto</h3>
+            <p>Santo Domingo Este, República Dominicana</p>
+            <p>Tel: (809) XXX-XXXX</p>
+            <p>Email: info@seguridadnunez.com</p>
+        </div>
+        <div class="footer-section">
+            <h3>Servicios</h3>
+            <a href="https://seguridadnunez.com/servicios/residencial">Seguridad Residencial</a>
+            <a href="https://seguridadnunez.com/servicios/comercial">Seguridad Comercial</a>
+            <a href="https://seguridadnunez.com/servicios/monitoreo">Monitoreo Electrónico</a>
+        </div>
+        <div class="footer-section">
+            <h3>Horario</h3>
+            <p>Lunes - Domingo</p>
+            <p>24 horas</p>
+            <p>Servicio de emergencia disponible</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 Seguridad Núñez. Todos los derechos reservados.</p>
+    </div>
+</footer>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Create floating shapes
-    const heroSection = document.querySelector('.hero');
-    const shapesContainer = document.createElement('div');
-    shapesContainer.className = 'floating-shapes';
-    
-    for(let i = 0; i < 10; i++) {
-        const shape = document.createElement('div');
-        shape.className = 'shape';
-        shape.style.left = Math.random() * 100 + 'vw';
-        shape.style.top = Math.random() * 100 + 'vh';
-        shape.style.width = Math.random() * 50 + 20 + 'px';
-        shape.style.height = shape.style.width;
-        shape.style.animationDelay = Math.random() * 5 + 's';
-        shapesContainer.appendChild(shape);
-    }
-    heroSection.appendChild(shapesContainer);
-
-    // Scroll reveal
-    const reveals = document.querySelectorAll('section');
-    reveals.forEach(element => element.classList.add('reveal'));
-
-    function revealOnScroll() {
-        reveals.forEach(element => {
-            const elementTop = element.getBoundingClientRect().top;
-            const windowHeight = window.innerHeight;
-            
-            if(elementTop < windowHeight - 150) {
-                element.classList.add('active');
-            }
-        });
-    }
-
-    window.addEventListener('scroll', revealOnScroll);
-    revealOnScroll(); // Initial check
-
-    // Animación de las barras de habilidades
-    const skillBars = document.querySelectorAll('.skill-progress');
-    
-    const animateSkillBars = () => {
-        skillBars.forEach(bar => {
-            const width = bar.getAttribute('data-width');
-            bar.style.width = width + '%';
-        });
-    };
-
-    document.addEventListener('DOMContentLoaded', animateSkillBars);
-
-    // Intersection Observer para las barras de habilidades
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                animateSkillBars();
-            }
-        });
-    });
-
-    const skillBarsContainer = document.querySelector('.skill-bars');
-    observer.observe(skillBarsContainer);
-
-    // Smooth scroll para los enlaces de navegación
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
-    });
-
-    // Navbar cambio de color al scroll
-    window.addEventListener('scroll', () => {
-        const navbar = document.querySelector('.navbar');
-        if (window.scrollY > 50) {
-            navbar.style.background = 'rgba(0,0,0,0.6)';
-        } else {
-            navbar.style.background = 'rgba(0,0,0,0.5)';
+particlesJS('particles-js',
+  {
+    "particles": {
+      "number": {
+        "value": 80,
+        "density": {
+          "enable": true,
+          "value_area": 800
         }
-    });
+      },
+      "color": {
+        "value": "#ffffff"
+      },
+      "shape": {
+        "type": "circle"
+      },
+      "opacity": {
+        "value": 0.5,
+        "random": false
+      },
+      "size": {
+        "value": 3,
+        "random": true
+      },
+      "line_linked": {
+        "enable": true,
+        "distance": 150,
+        "color": "#ffffff",
+        "opacity": 0.4,
+        "width": 1
+      },
+      "move": {
+        "enable": true,
+        "speed": 6,
+        "direction": "none",
+        "random": false,
+        "straight": false,
+        "out_mode": "out",
+        "bounce": false
+      }
+    },
+    "interactivity": {
+      "detect_on": "canvas",
+      "events": {
+        "onhover": {
+          "enable": true,
+          "mode": "repulse"
+        },
+        "onclick": {
+          "enable": true,
+          "mode": "push"
+        },
+        "resize": true
+      }
+    },
+    "retina_detect": true
+  }
+);
 
-    // Added mobile menu functionality
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-
-    menuToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-    });
-
-    // Close menu when clicking a link
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-        });
-    });
-
-    // Add parallax effect to hero section
-    window.addEventListener('mousemove', (e) => {
-        const shapes = document.querySelectorAll('.shape');
-        const x = e.clientX / window.innerWidth;
-        const y = e.clientY / window.innerHeight;
-        
-        shapes.forEach(shape => {
-            const speed = shape.offsetWidth / 50;
-            shape.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
-        });
-    });
-    
-    // Enhance scroll reveal
-    const observerSection = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-            }
-        });
-    }, {
-        threshold: 0.1
-    });
-
-    document.querySelectorAll('.reveal').forEach((el) => observerSection.observe(el));
-
-    // Animación de las barras de habilidades
-    const skillBarsAnimate = document.querySelectorAll('.skill-progress');
-    
-    const animateSkillBarsInit = () => {
-        skillBarsAnimate.forEach(bar => {
-            const width = bar.getAttribute('data-width');
-            bar.style.width = width + '%';
-        });
-    };
-
-    document.addEventListener('DOMContentLoaded', animateSkillBarsInit);
-
-    // Intersection Observer para las barras de habilidades
-    const observerSkillBars = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                animateSkillBarsInit();
-            }
-        });
-    });
-
-    const skillBarsContainerInit = document.querySelector('.skill-bars');
-    observerSkillBars.observe(skillBarsContainerInit);
-
-    // Smooth scroll para los enlaces de navegación
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
-    });
-
-    // Navbar cambio de color al scroll
-    window.addEventListener('scroll', () => {
-        const navbar = document.querySelector('.navbar');
-        if (window.scrollY > 50) {
-            navbar.style.background = 'rgba(0,0,0,0.6)';
-        } else {
-            navbar.style.background = 'rgba(0,0,0,0.5)';
-        }
-    });
-
-    // Added mobile menu functionality
-    const menuToggleMobile = document.querySelector('.menu-toggle');
-    const navLinksMobile = document.querySelector('.nav-links');
-
-    menuToggleMobile.addEventListener('click', () => {
-        navLinksMobile.classList.toggle('active');
-    });
-
-    // Close menu when clicking a link
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            navLinksMobile.classList.remove('active');
-        });
-    });
-
-    // Added animations
-    const typingEffect = () => {
-        const text = document.querySelector('.typing-effect');
-        text.style.width = '0';
-        setTimeout(() => {
-            text.style.width = '100%';
-        }, 100);
-    };
-
-    window.addEventListener('load', typingEffect);
+window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
 });
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    AOS.init({
+        duration: 800,
+        offset: 100,
+        once: false,
+        mirror: true
+    });
+
+    // Testimonial slider
+    let currentSlide = 0;
+    const track = document.querySelector('.testimonial-track');
+    const cards = document.querySelectorAll('.testimonial-card');
+    
+    setInterval(() => {
+        currentSlide = (currentSlide + 1) % cards.length;
+        track.style.transform = `translateX(-${currentSlide * (300 + 32)}px)`;
+    }, 5000);
+});
+
+// Add smooth scrolling
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+
 </script>
 </body></html>
